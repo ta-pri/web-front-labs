@@ -29,6 +29,7 @@ footer {
 a {
     color: green;
     text-decoration: none;
+    transition: 0.5s 2s;
 }
 
 a:link{
@@ -47,6 +48,7 @@ color: red;
 text-decoration: underline;
 text-shadow: 8px 2px 3px rgba(93, 95, 224, 0.5);
 font-style: italic ;
+transition: 0.3s;
 }
 
 a:active {
