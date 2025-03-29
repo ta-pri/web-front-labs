@@ -27,5 +27,29 @@ footer {
 }
 
 a {
+    color: green;
     text-decoration: none;
+}
+
+a:link{
+    color: rgb(6, 114, 37);
+    text-decoration: none;
+}
+
+a:visited{
+    color: rgb(36, 6, 114);
+    text-decoration: none;
+    font-style: italic ;
+}
+
+a:hover {
+color: red;
+text-decoration: underline;
+text-shadow: 8px 2px 3px rgba(93, 95, 224, 0.5);
+font-style: italic ;
+}
+
+a:active {
+    color: black;
+    opacity: 0.3;
 }
