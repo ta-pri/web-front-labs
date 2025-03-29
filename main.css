@@ -55,3 +55,14 @@ a:active {
     color: black;
     opacity: 0.3;
 }
+div.menu {
+    border: 7px solid #6164fe80;
+    border-radius: 5px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+div.menu:hover{
+    background-color: #ff4ba530;
+    box-sizing: 0 0 15px #00000030;
+}
