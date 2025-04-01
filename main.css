@@ -16,7 +16,7 @@ main {
     background-color: lightblue;
     color: maroon;
     font-family: Arial;
-    margin: 0px;
+    margin: 10px 20px 45px;
 }
 
 footer {
@@ -24,6 +24,10 @@ footer {
     color: rgb(105, 101, 101);
     font-family: Arial;
     margin: 0px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 a {
