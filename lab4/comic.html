@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привалова Таисия Дмитриевна. Комикс</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon-32x32.png" >
+    <link rel="shortcut icon" href="../favicon-16x16.ico" >
+    <style>
+        .container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .container div {
+            line-height: 135px;
+            text-align: center;
+            font-size: 30pt;
+            background-color: rgb(245, 219, 245);
+            border: 1px dotted darkblue;
+            border-radius: 50%;
+            box-shadow: 3px 3px 10px rgba(95, 37, 37, 0.8);
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .one{
+            width: 50px;
+            height: 40px;
+            left: 350px;
+            top: 130px;
+            z-index: 1;
+        }
+        .two{
+            width: 80px;
+            height: 60px;
+            left: 370px;
+            top: 100px;
+            z-index: 2;
+        }
+        .three{
+            width: 120px;
+            height: 100px;
+            left: 390px;
+            top: 60px;
+            z-index: 3;
+        }
+        .four{
+            width: 170px;
+            height: 140px;
+            left: 420px;
+            top: 20px;
+            z-index: 4;
+        }
+        img {
+            display: block;
+        }
+
+        .container:hover .one {
+            opacity: 1;
+            transition-delay: 0.2s;
+        }
+
+        .container:hover .two {
+            opacity: 1;
+            transition-delay: 0.4s;
+        }
+
+        .container:hover .three {
+            opacity: 1;
+            transition-delay: 0.6s;
+        }
+
+        .container:hover .four {
+            opacity: 1;
+            transition-delay: 0.8s;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 4
+    </header>
+    
+    <main> 
+        <div class="container">
+            <img src="стич.png"  height="500" z-index: 0>
+            <div class="one"></div>
+            <div class="two"></div>
+            <div class="three"></div>
+            <div class="four">Хммм...</div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
