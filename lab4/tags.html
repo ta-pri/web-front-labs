@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
     <head>
         <meta charset="utf-8">
         <title>Привалова Таисия Дмитриевна. Облако тегов</title>
         <link rel="stylesheet" href="../main.css">
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-        <link rel="shortcut icon" href="../favicon-32x32.png" >
-        <link rel="shortcut icon" href="../favicon-16x16.ico" >
+        <link rel="shortcut icon" href="../favicon-32x32.png">
+        <link rel="shortcut icon" href="../favicon-16x16.ico">
         <style>
             body {
                 margin: 0;
@@ -17,32 +17,53 @@
                 overflow: hidden;
             }
             .tag {
-                position: absolute;
-                font-weight: bold;
-                cursor: pointer;
-                transition: transform 0.3s, text-shadow 0.3s;
-                z-index: 0;
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.3s, text-shadow 0.3s;
+            z-index: 0;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: ease-in-out;
+            animation-direction: alternate;
             }
+
             .tag:hover {
-                transform: scale(2);
-                text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
-                z-index: 10;
+            transform: scale(2);
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+            animation-play-state: paused;
             }
-            .t1  { top: 20%; left: 78%; font-size: 62px; color: plum; transform: rotate(45deg); }        
-            .t2  { top: 80%; left: 80%; font-size: 36px; color: #0057e7; transform: rotate(5deg); }        
-            .t3  { top: 35%; left: 50%; font-size: 22px; color: #e60026; transform: rotate(-5deg); }       
-            .t4  { top: 34%; left: 23%; font-size: 45px; color: #b3ff00; transform: rotate(4deg); }        
-            .t5  { top: 45%; left: 30%; font-size: 20px; color: #f0fc45; transform: rotate(27deg); }       
-            .t6  { top: 12%; left: 45%; font-size: 82px; color: #054405; transform: rotate(6deg); }        
-            .t7  { top: 55%; left: 60%; font-size: 45px; color: #444; transform: rotate(-16deg); }          
-            .t8  { top: 65%; left: 12%; font-size: 21px; color: #d63384; transform: rotate(10deg); }       
-            .t9  { top: 33%; left: 2%; font-size: 32px; color: #15a432; transform: rotate(-7deg); }       
-            .t10 { top: 15%; left: 19%; font-size: 20px; color: #30067e; transform: rotate(-16deg); }        
-            .t11 { top: 90%; left: 17%; font-size: 36px; color: #9933cc; transform: rotate(-9deg); }       
-            .t12 { top: 48%; left: 70%; font-size: 12px; color: #f2a900; transform: rotate(7deg); }        
-            .t13 { top: 67%; left: 35%; font-size: 80px; color: #b90404; transform: rotate(-4deg); }       
-            .t14 { top: 7%; left: 7%; font-size: 45px; color: #4df3d4; transform: rotate(6deg); }        
-            .t15 { top: 10%; left: 67%; font-size: 24px; color: #3366cc; transform: rotate(-6deg); }              
+
+            @keyframes float1 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(30px, 50px) rotate(10deg); }
+            }
+
+            @keyframes float2 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-20px, 25px) rotate(-5deg); }
+            }
+
+            @keyframes float3 {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(15px, -15px) rotate(3deg); }
+            }
+
+            .t1  { top: 20%; left: 78%; font-size: 62px; color: plum; animation-name: float1; }
+            .t2  { top: 80%; left: 80%; font-size: 36px; color: #0057e7; animation-name: float2; }
+            .t3  { top: 35%; left: 50%; font-size: 22px; color: #e60026; animation-name: float3; }
+            .t4  { top: 34%; left: 23%; font-size: 45px; color: #b3ff00; animation-name: float1; }
+            .t5  { top: 45%; left: 30%; font-size: 20px; color: #f0fc45; animation-name: float2; }
+            .t6  { top: 12%; left: 45%; font-size: 82px; color: #054405; animation-name: float3; }
+            .t7  { top: 55%; left: 60%; font-size: 45px; color: #444; animation-name: float1; }
+            .t8  { top: 65%; left: 12%; font-size: 21px; color: #d63384; animation-name: float2; }
+            .t9  { top: 33%; left: 2%;  font-size: 32px; color: #15a432; animation-name: float3; }
+            .t10 { top: 15%; left: 19%; font-size: 20px; color: #30067e; animation-name: float1; }
+            .t11 { top: 90%; left: 17%; font-size: 36px; color: #9933cc; animation-name: float2; }
+            .t12 { top: 48%; left: 70%; font-size: 12px; color: #f2a900; animation-name: float3; }
+            .t13 { top: 67%; left: 35%; font-size: 80px; color: #b90404; animation-name: float1; }
+            .t14 { top: 7%;  left: 7%;  font-size: 45px; color: #4df3d4; animation-name: float2; }
+            .t15 { top: 10%; left: 67%; font-size: 24px; color: #3366cc; animation-name: float3; }
         </style>
     </head>
     <body>
@@ -50,21 +71,21 @@
         
         <main>
             <div class="tag-cloud">
-                <div class="tag t1">Сплетница</div>
-                <div class="tag t2">Дневники вампира</div>
-                <div class="tag t3">Волчонок</div>
-                <div class="tag t4">Молодёжка</div>
-                <div class="tag t5">Милые обманщицы</div>
-                <div class="tag t6">Во все тяжкие</div>
-                <div class="tag t7">Острые козырьки</div>
-                <div class="tag t8">Внешние отмели</div>
-                <div class="tag t9">Очень странные дела</div>
-                <div class="tag t10">Шерлок</div>
-                <div class="tag t11">Скам</div>
-                <div class="tag t12">Игра престолов</div>
-                <div class="tag t13">Фишер</div>
-                <div class="tag t14">Трудные подростки</div>
-                <div class="tag t15">Сверхъестественное</div>
+            <div class="tag t1">Сплетница</div>
+            <div class="tag t2">Дневники вампира</div>
+            <div class="tag t3">Волчонок</div>
+            <div class="tag t4">Молодёжка</div>
+            <div class="tag t5">Милые обманщицы</div>
+            <div class="tag t6">Во все тяжкие</div>
+            <div class="tag t7">Острые козырьки</div>
+            <div class="tag t8">Внешние отмели</div>
+            <div class="tag t9">Очень странные дела</div>
+            <div class="tag t10">Шерлок</div>
+            <div class="tag t11">Скам</div>
+            <div class="tag t12">Игра престолов</div>
+            <div class="tag t13">Фишер</div>
+            <div class="tag t14">Трудные подростки</div>
+            <div class="tag t15">Сверхъестественное</div>
             </div>
         </main>
 
