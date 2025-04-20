@@ -15,8 +15,22 @@
             let result = a+b;
             alert(" Сумма " + a + " и " + b + " равна " + result);
         }
+        function ShowAuthor() {
+            let author = 'Автор страницы: \nПривалова Таисия Дмитриевна';
+            alert(author);
+        }
+        function ShowHi() {
+            let hi = 'Всем приветик! \nРада видеть вас на своей странице:)';
+            alert(hi);
+        }
     </script>
     <style>
+        header{
+            cursor: pointer;
+        }
+        footer{
+            cursor: pointer;
+        }
         .message{
             height: 30px;
             width: 250px;
@@ -32,17 +46,16 @@
     </style>
 </head>
 <body>
-    <header>
+    <header onclick="ShowAuthor()">
         НГТУ, ФБ, Лабораторная работа 5
     </header>
 
     <main>
         <div class="message" onclick="ShowSum()">Сколько будет 5154+7891?</div>
-        <div class="message">Узнать, кто автор страницы</div>
-
+        <div class="message" onclick="ShowAuthor()">Узнать, кто автор страницы</div>
     </main>
 
-    <footer>
+    <footer ondblclick="ShowHi()">
         &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
     </footer>
     
