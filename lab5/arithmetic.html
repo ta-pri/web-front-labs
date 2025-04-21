@@ -18,6 +18,24 @@
             let result = a+b;
             alert(" Сумма " + a + " и " + b + " равна " + result);
         }
+        function ShowRas() {
+            let inputA=document.getElementById('numberA')
+            let inputB=document.getElementById('numberB')
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a-b;
+            alert(" Разность " + a + " и " + b + " равна " + result);
+        }
+        function ShowPr() {
+            let inputA=document.getElementById('numberA')
+            let inputB=document.getElementById('numberB')
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let result = a*b;
+            alert(" Произведение " + a + " и " + b + " равна " + result);
+        }
         function ShowAuthor() {
             let author = 'Автор страницы: \nПривалова Таисия Дмитриевна';
             alert(author);
@@ -58,6 +76,8 @@
         <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
         <div class="message" onclick="ShowSum()">Найти сумму чисел</div>
         <div class="message" onclick="ShowAuthor()">Узнать, кто автор страницы</div>
+        <div class="message" onclick="ShowRas()">Найти разность чисел</div>
+        <div class="message" onclick="ShowPr()">Найти произведение чисел</div>
     </main>
 
     <footer ondblclick="ShowHi()">
