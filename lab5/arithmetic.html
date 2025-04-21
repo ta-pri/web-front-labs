@@ -10,8 +10,11 @@
     <link rel="shortcut icon" href="../favicon-16x16.ico" >
     <script>
         function ShowSum() {
-            let a = 5154;
-            let b = 7891;
+            let inputA=document.getElementById('numberA')
+            let inputB=document.getElementById('numberB')
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
             let result = a+b;
             alert(" Сумма " + a + " и " + b + " равна " + result);
         }
@@ -51,7 +54,9 @@
     </header>
 
     <main>
-        <div class="message" onclick="ShowSum()">Сколько будет 5154+7891?</div>
+        <label>Первое число: <input type="number" value="5154" id="numberA"></label><br>
+        <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
+        <div class="message" onclick="ShowSum()">Найти сумму чисел</div>
         <div class="message" onclick="ShowAuthor()">Узнать, кто автор страницы</div>
     </main>
 
