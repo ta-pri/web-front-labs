@@ -72,6 +72,44 @@
             let result = a/b;
             alert( a + " / " + b + " = " + result);   
         }
+        function ShowStep(){
+            let inputA=document.getElementById('numberA');
+            let inputB=document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            if ((b==0) && (a==0)) {
+                alert('Оба поля не могут быть 0!');
+                inputB.style.color='red';
+                inputB.style.borderColor='red';
+                inputA.focus();
+                inputA.select();
+                inputA.style.color='red';
+                inputA.style.borderColor='red';
+                return;
+            }
+
+            if(isNaN(a)) {
+                alert('Введите числовое значение в первое поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color='red';
+                inputB.style.borderColor='red';
+                return;
+            }
+            if(isNaN(b)) {
+                alert('Введите числовое значение во второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color='red';
+                inputB.style.borderColor='red';
+                return;
+            }
+            inputB.style.color='';
+            inputB.style.borderColor='';
+            let result = a**b;
+            alert( a + " ** " + b + " = " + result);   
+        }
         function ShowAuthor() {
             let author = 'Автор страницы: \nПривалова Таисия Дмитриевна';
             alert(author);
@@ -115,6 +153,7 @@
         <div class="message" onclick="ShowRas()">Найти разность чисел</div>
         <div class="message" onclick="ShowPr()">Найти произведение чисел</div>
         <div class="message" onclick="ShowDiv()">Найти отношение чисел</div>
+        <div class="message" onclick="ShowStep()">Найти возведение в степень</div>
     </main>
 
     <footer ondblclick="ShowHi()">
