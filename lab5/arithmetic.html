@@ -36,6 +36,42 @@
             let result = a*b;
             alert(" Произведение " + a + " и " + b + " равна " + result);
         }
+        function ShowDiv(){
+            let inputA=document.getElementById('numberA');
+            let inputB=document.getElementById('numberB');
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            if(b==0) {
+                alert('На ноль делить нельзя!');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color='red';
+                inputB.style.borderColor='red';
+                return;
+            }
+
+            if(isNaN(a)) {
+                alert('Введите числовое значение в первое поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color='red';
+                inputB.style.borderColor='red';
+                return;
+            }
+            if(isNaN(b)) {
+                alert('Введите числовое значение во второе поле');
+                inputB.focus();
+                inputB.select();
+                inputB.style.color='red';
+                inputB.style.borderColor='red';
+                return;
+            }
+            inputB.style.color='';
+            inputB.style.borderColor='';
+            let result = a/b;
+            alert( a + " / " + b + " = " + result);   
+        }
         function ShowAuthor() {
             let author = 'Автор страницы: \nПривалова Таисия Дмитриевна';
             alert(author);
@@ -78,6 +114,7 @@
         <div class="message" onclick="ShowAuthor()">Узнать, кто автор страницы</div>
         <div class="message" onclick="ShowRas()">Найти разность чисел</div>
         <div class="message" onclick="ShowPr()">Найти произведение чисел</div>
+        <div class="message" onclick="ShowDiv()">Найти отношение чисел</div>
     </main>
 
     <footer ondblclick="ShowHi()">
