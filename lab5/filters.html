@@ -38,6 +38,12 @@
             document.getElementById('hue-rotateOutput').innerText=value;
             document.getElementById('hue-rotateImage').style.filter='hue-rotate(' + value + ')';
         }
+
+        function invertChange(){
+            let value=document.getElementById('invertValue').value + '%' ;
+            document.getElementById('invertOutput').innerText=value;
+            document.getElementById('invertImage').style.filter='invert(' + value + ')';
+        }
     </script>
     <style>
         img {
@@ -77,18 +83,25 @@
         <div><img src="z.jpg" id="contrastImage"></div>
 
         <div>
-            Фильтр contrast:
+            Фильтр grayscale:
                 <input type="range" min="0" max="100" value="0" onchange="grayscaleChange()" id="grayscaleValue">
                 <span id="grayscaleOutput"></span>
-            </div>
-            <div><img src="m.jpg" id="grayscaleImage"></div>
+        </div>
+        <div><img src="m.jpg" id="grayscaleImage"></div>
 
         <div>
-            Фильтр contrast:
+            Фильтр hue-rotate:
                 <input type="range" min="0" max="360" value="0" onchange="hueRotateChange()" id="hue-rotateValue">
                 <span id="hue-rotateOutput"></span>
-            </div>
-            <div><img src="o.jpg" id="hue-rotateImage"></div>
+        </div>
+        <div><img src="o.jpg" id="hue-rotateImage"></div>
+
+        <div>
+            Фильтр invert:
+                <input type="range" min="0" max="100" value="0" onchange="invertChange()" id="invertValue">
+                <span id="invertOutput"></span>
+        </div>
+        <div><img src="u.jpg" id="invertImage"></div>
     </main>
 
     <footer>
