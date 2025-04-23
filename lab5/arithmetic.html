@@ -118,6 +118,15 @@
             let hi = 'Всем приветик! \nРада видеть вас на своей странице:)';
             alert(hi);
         }
+        function changeOutput(buttonNum, backColor, textColor, borderRadius, borderStyle, borderWidth){
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка' + buttonNum;
+            output.style.backgroundColor=backColor;
+            output.style.color=textColor;
+            output.style.borderRadius=borderRadius;
+            output.style.borderStyle=borderStyle;
+            output.style.borderWidth=borderWidth
+        }
     </script>
     <style>
         header{
@@ -138,6 +147,11 @@
             text-align: center;
             cursor: pointer;
         }
+        #output{
+            border: 1px solid;
+            width: 300px;
+            height: 40px;
+        }
     </style>
 </head>
 <body>
@@ -150,10 +164,20 @@
         <label>Второе число: <input type="number" value="7891" id="numberB"></label><br>
         <div class="message" onclick="ShowSum()">Найти сумму чисел</div>
         <div class="message" onclick="ShowAuthor()">Узнать, кто автор страницы</div>
+
         <div class="message" onclick="ShowRas()">Найти разность чисел</div>
         <div class="message" onclick="ShowPr()">Найти произведение чисел</div>
         <div class="message" onclick="ShowDiv()">Найти отношение чисел</div>
         <div class="message" onclick="ShowStep()">Найти возведение в степень</div>
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, 'red', 'yellow', '15px', 'dotted', '4px')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, 'black', 'lime', '5px', 'double', '5px')"> 
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3,'plum', 'blue', '10px', 'ridge', '3px')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, 'green', 'lightblue', '7px', 'dashed', '4px')">
+        </div>
+
+        <div id="output"></div>
+        
     </main>
 
     <footer ondblclick="ShowHi()">
