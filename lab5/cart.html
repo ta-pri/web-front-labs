@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привалова Таисия Дмитриевна.  Корзина</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon-32x32.png" >
+    <link rel="shortcut icon" href="../favicon-16x16.ico" >
+    <script>
+        function Tsena(){
+            let a = parseInt(document.getElementById('numberA').value) || 0;
+            let b = parseInt(document.getElementById('numberB').value) || 0;
+            let c = parseInt(document.getElementById('numberC').value) || 0;
+            let d = parseInt(document.getElementById('numberD').value) || 0;
+            let e = parseInt(document.getElementById('numberE').value) || 0;
+
+            let result = a * 78 + b * 60 + c * 89 + d * 54 + e * 300;
+            document.getElementById('resultR').innerText = "Общая цена: " + result + " р.";
+
+        }
+        function Clear(){
+            document.getElementById('numberA').value = '';
+            document.getElementById('numberB').value = '';
+            document.getElementById('numberC').value = '';
+            document.getElementById('numberD').value = '';
+            document.getElementById('numberE').value = '';
+            document.getElementById('resultR').innerText = '';
+        }
+    </script>
+    <style>
+        .cor{
+            background: plum;
+            padding: 15px;
+            width: 220px;
+            border: 2px solid white;
+            border-radius: 7px;
+            line-height: 1.5;
+            margin: 0 auto;
+        }
+        input[type="number"] {
+        width: 100%;
+        box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <div class="cor">
+            <h3>Корзина товаров</h3>
+            <label>Шоколадка (78р/шт):<br><input type="number" placeholder="Введите количество шоколадок" id="numberA" min="0"></label><br>
+            <label>Яблоко (60р/шт): <br><input type="number" placeholder="Введите количество яблок" id="numberB" min="0"></label><br>
+            <label>Йогурт (89р/шт):<br> <input type="number"  placeholder="Введите количество йогуртов" id="numberC" min="0"></label><br>
+            <label>Хлеб (54р/шт): <br><input type="number" placeholder="Введите количество хлеба" id="numberD" min="0"></label><br>
+            <label>Ананас (300р/шт):<br><input type="number"placeholder="Введите количество ананасов" id="numberE" min="0"></label><br>
+
+            <input type="button" value="Рассчитать" onclick="Tsena()" ><br>
+            <div id="resultR"></div>
+            <input type="button" value="Очистить" onclick="Clear()" ><br> 
+
+        </div>
+    </main>
+
+    <footer>
+        &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+    </footer>
+    
+</body>
+</html>
