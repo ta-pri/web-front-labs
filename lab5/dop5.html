@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привалова Таисия Дмитриевна. Доп.задание</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <link rel="shortcut icon" href="../favicon-16x16.ico">
+
+    <script>
+        function applyFilter() {
+            let img = document.getElementById('filteredImage');
+            let info = document.getElementById('info');
+
+            let rect = img.getBoundingClientRect();
+            let x = this.event.clientX - rect.left;
+            let percent = x / img.clientWidth;
+            let blurValue = (percent * 10).toFixed(2);
+
+            let filter = "blur(" + blurValue + "px)";
+            let description = "Фильтр: blur(" + blurValue + "px)";
+
+            if (this.event.ctrlKey) {
+                filter += ' grayscale(100%)';
+                description += ' + grayscale(100%)';
+            }
+
+            if (this.event.altKey) {
+                filter += ' hue-rotate(180deg)';
+                description += ' + hue-rotate(180deg)';
+            }
+
+            if (this.event.shiftKey) {
+                filter += ' invert(100%)';
+                description += ' + invert(100%)';
+            }
+
+            img.style.filter = filter;
+            info.innerHTML = description;
+        }
+
+        function clearFilter() {
+            let img = document.getElementById('filteredImage');
+            let info = document.getElementById('info');
+            img.style.filter = 'none';
+            info.innerHTML = 'Фильтр: none';
+        }
+    </script>
+
+    <style>
+        #filteredImage {
+            max-width: 600px;
+            width: 100%;
+            display: block;
+            margin: 0 auto;
+            transition: filter 0.3s ease;
+            border: 3px solid #333;
+        }
+
+        #info {
+            margin-top: 15px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        #help {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <img src="l.webp" alt="Фильтруемое изображение" id="filteredImage"
+             onmousemove="applyFilter()" onmouseleave="clearFilter()">
+
+        <div id="info">Фильтр: none</div>
+
+        <div id="help">
+            Наведите мышь на изображение — будет применяться фильтр blur.<br>
+            Нажмите <b>Ctrl</b>, <b>Alt</b> или <b>Shift</b>, чтобы применить дополнительные фильтры(grayscale, hue-rotate,invert).
+        </div>
+    </main>
+
+    <footer>
+        &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
