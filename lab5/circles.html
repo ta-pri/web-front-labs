@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привалова Таисия Дмитриевна. Скрытие кругов</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <link rel="shortcut icon" href="../favicon-16x16.ico">
+    
+    <script>
+        function Kr(n) {
+            const circle = document.querySelector('.t' + n);
+            circle.classList.add('hidden');
+        }
+
+        function resetCircles() {
+            const allCircles = document.querySelectorAll('.circle');
+            allCircles.forEach(function(circle) {
+                circle.classList.remove('hidden');
+            });
+        }
+    </script>
+    <style>
+        body {
+            position: relative;
+            height: 100vh;
+        }
+
+        div.circle {
+            position: absolute;
+            border: 1px solid;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.6s ease;
+        }
+
+        .hidden {
+            opacity: 0;
+            width: 0;
+            height: 0;
+            padding: 0;
+            line-height: 0;
+        }
+
+        .t1  { top: 22%; left: 78%; background-color: plum; }
+        .t2  { top: 80%; left: 80%; background-color: lightblue; }
+        .t3  { top: 35%; left: 50%; background-color: lightcoral; }
+        .t4  { top: 34%; left: 23%; background-color: #b3ff00; }
+        .t5  { top: 45%; left: 30%; background-color: #f0fc45; }
+        .t6  { top: 12%; left: 45%; background-color: lightgreen; }
+        .t7  { top: 55%; left: 60%; background-color: lightslategray; }
+        .t8  { top: 65%; left: 12%; background-color: lightpink; }
+        .t9  { top: 33%; left: 2%; background-color: #15a432; }
+        .t10 { top: 15%; left: 19%; background-color: lightgoldenrodyellow; }
+
+        button {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 5
+    </header>
+
+    <main>
+        <div class="circle t1" onclick="Kr(1)">1</div>
+        <div class="circle t2" onclick="Kr(2)">2</div>
+        <div class="circle t3" onclick="Kr(3)">3</div>
+        <div class="circle t4" onclick="Kr(4)">4</div>
+        <div class="circle t5" onclick="Kr(5)">5</div>
+        <div class="circle t6" onclick="Kr(6)">6</div>
+        <div class="circle t7" onclick="Kr(7)">7</div>
+        <div class="circle t8" onclick="Kr(8)">8</div>
+        <div class="circle t9" onclick="Kr(9)">9</div>
+        <div class="circle t10" onclick="Kr(10)">10</div>
+
+        <button onclick="resetCircles()">Показать все круги</button>
+    </main>
+
+    <footer>
+        &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+    </footer>
+
+</body>
+</html>
