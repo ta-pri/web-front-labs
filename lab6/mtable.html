@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привалова Таисия Дмитриевна. Таблица умножения</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon-32x32.png" >
+    <link rel="shortcut icon" href="../favicon-16x16.ico" >
+    <script>
+        function showMutipleTable(){
+            let inputA=document.getElementById('numberA')
+            let inputB=document.getElementById('numberB')
+            let inputC=document.getElementById('numberC')
+
+            let a = parseInt(inputA.value);
+            let b = parseInt(inputB.value);
+            let c = parseInt(inputC.value);
+            
+            if(b>c) {
+                alert('Измените поле "Начать с", оно не должно быть больше поля "Закончить на"');
+                inputB.focus();
+                inputB.select();
+                return;
+            }
+            let tbl = document.getElementById('mtable');
+            tbl.innerHTML = '<h1>Таблица умножения</h1>';
+            for(i = b; i <= c; i++) {
+                let s = `<div>${i} * ${a} = ${i*a}</div>`;
+                tbl.innerHTML += s;
+            }
+        }
+    </script>
+    <style>
+        .tab{
+            background: white;
+            padding: 8px;
+            width: 180px;
+            border: 2px solid plum;
+            border-radius: 7px;
+            line-height: 1.2;
+            text-align: center;
+            margin: 10px
+        }
+    </style>
+</head>
+<body onload="showMutipleTable()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+
+    <main>
+        <div id="mtable" class="tab"></div>
+        <label>Умножить на: <input type="number"  value="7" id="numberA"></label><br>
+        <label>Начать с: <input type="number" value="1" id="numberB"></label><br>
+        <label>Закончить на: <input type="number" value="10" id="numberC"></label><br>
+        <input type="button" value="Таблица" onclick="showMutipleTable()" ><br>
+    </main>
+
+    <footer>
+        &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+    </footer>
+    
+</body>
+</html>
