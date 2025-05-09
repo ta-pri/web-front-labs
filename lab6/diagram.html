@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привалова Таисия Дмитриевна. Диаграмма</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon-32x32.png">
+    <link rel="shortcut icon" href="../favicon-16x16.ico">
+    <script>
+        function showDiagram() {
+            let data = [32, 23, 84, 13, 65, 71, 47, 55, 91, 5];
+            let colors = ['red', 'green', 'blue', 'pink', 'yellow', 'white', 'orange', 'purple', 'darkblue', 'brown'];
+            let bars = document.getElementsByClassName('bar');
+            const diagHeight = document.getElementById('diag').clientHeight;
+            const maxData = Math.max(...data);
+            const k = diagHeight / maxData * 0.9;
+            for(let i = 0; i < data.length; i++) {
+                bars[i].style.height = k * data[i] + 'px';
+                bars[i].style.background = colors[i];
+                bars[i].textContent = data[i];
+            }
+        }
+    </script>
+    <style>
+        #diag {
+            background: white;
+            border: 1px solid black;
+            margin: 10px;
+            display: flex;
+            align-items: flex-end;
+            height: 180px;
+            width:248px;
+        }
+
+        .bar {
+            background: plum;
+            border: 2px solid darkblue;
+            margin: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            writing-mode: vertical-rl;
+            font-size: 12px;
+            color: black;
+        }
+    </style>
+</head>
+<body onload="showDiagram()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+
+    <main>
+        <div id="diag">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
