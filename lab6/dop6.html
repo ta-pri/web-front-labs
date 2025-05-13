@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привалова Таисия Дмитриевна. Лабораторная 6</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon-32x32.png" >
+    <link rel="shortcut icon" href="../favicon-16x16.ico" >
+    <!DOCTYPE html>
+    <html lang="ru">
+    <script>
+        let temps = [];
+        
+        function getRandomTemp(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        
+        function generateTemps() {
+            for (let i = 0; i < 30; i++) {
+                let t1 = getRandomTemp(5, 25);
+                let t2 = getRandomTemp(20, 45);
+                temps.push({
+                  min: Math.min(t1, t2),
+                  max: Math.max(t1, t2)
+                });
+            }
+        }
+        
+            function renderChart() {
+              const chart = document.getElementById('chart');
+              chart.innerHTML = '';
+              for (let i = 0; i < temps.length; i++) {
+                const dayDiv = document.createElement('div');
+                dayDiv.className = 'day';
+        
+                const min = temps[i].min;
+                const max = temps[i].max;
+        
+                const minBar = document.createElement('div');
+                minBar.className = 'bar min';
+                minBar.style.height = min * 4 + 'px';
+                minBar.innerText = min + '°C';
+        
+                const maxBar = document.createElement('div');
+                maxBar.className = 'bar max';
+                maxBar.style.height = (max - min) * 4 + 'px';
+                maxBar.style.bottom = min * 4 + 'px';
+                maxBar.innerText = max + '°C';
+        
+                dayDiv.appendChild(minBar);
+                dayDiv.appendChild(maxBar);
+                chart.appendChild(dayDiv);
+              }
+            }
+        
+            function highlightDay() {
+              const dayNum = parseInt(document.getElementById('dayInput').value);
+              if (isNaN(dayNum) || dayNum < 1 || dayNum > 30) return;
+        
+              // Снять выделение
+              document.querySelectorAll('.bar').forEach(b => b.classList.remove('highlight'));
+        
+              const day = document.querySelectorAll('.day')[dayNum - 1];
+              const bars = day.querySelectorAll('.bar');
+              bars.forEach(b => b.classList.add('highlight'));
+        
+              document.getElementById('result').innerHTML = `
+                <b>Минимальная температура:</b> ${temps[dayNum - 1].min}°C<br>
+                <b>Максимальная температура:</b> ${temps[dayNum - 1].max}°C
+              `;
+            }
+        
+            window.onload = function () {
+              generateTemps();
+              renderChart();
+            }
+          </script>
+      <style>
+        body {
+          background: #d6f0f5;
+          font-family: sans-serif;
+        }
+    
+        #chart {
+          display: flex;
+          align-items: flex-end;
+          height: 300px;
+          padding: 10px;
+          margin: 0 auto;
+          background-color: #e0f7fa;
+          border: 2px solid #888;
+          gap: 5px;
+          width:750px;
+        }
+    
+        .day {
+          width: 20px;
+          position: relative;
+        }
+    
+        .bar {
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+          color: white;
+          font-size: 10px;
+          text-align: center;
+        }
+    
+        .min {
+          background-color: blue;
+        }
+    
+        .max {
+          background-color: lightblue;
+          color: black;
+        }
+    
+        .highlight {
+          background-color: orange !important;
+          font-weight: bold;
+        }
+    
+        #controls {
+          padding: 10px 20px;
+        }
+    
+        input {
+          width: 40px;
+        }
+      </style>
+
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 6
+        </header>
+
+        <main>
+        <h2 style="text-align:center">Диаграмма температур за месяц</h2>
+        <div id="chart"></div>
+
+        <div id="controls">
+            Номер дня: <input id="dayInput" type="number" min="1" max="30">
+            <button onclick="highlightDay()">Найти</button>
+            <div id="result" style="margin-top:10px;"></div>
+          </div>
+        </main>
+
+        <footer>
+            &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+        </footer>
+
+    </body>
+    </html>
+    
