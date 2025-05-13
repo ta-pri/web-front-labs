@@ -2,32 +2,119 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Привалова Таисия Дмитриевна. Дата-время</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="../favicon-32x32.png" >
     <link rel="shortcut icon" href="../favicon-16x16.ico" >
-    <script>
-        function showDate() {
-            let out = document.getElementById('current-date')
-            let  today = new Date();
-            out.innerHTML = today.toLocaleString('ru-Ru');
+    <style>
+
+        .locale-date {
+            margin: 6px 0;
+            font-size: 16px;
+            color: darkred;
         }
+        #current-date {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        const locales = {
+            'ru-RU': 'России',
+            'ar-LY': 'Ливии',
+            'cs-CZ': 'Чехии',
+            'el-GR': 'Греции',
+            'en-US': 'США',
+            'es-BO': 'Боливии',
+            'zh-CN': 'Китая'
+        };
+
+        let colorTimer = null;
+        let dateTimer = null;
+
+        function showDate() {
+            const now = new Date();
+            const output = document.getElementById('locale-dates');
+            output.innerHTML = '';
+
+            for (const [code, name] of Object.entries(locales)) {
+                const formatted = now.toLocaleString(code);
+                const div = document.createElement('div');
+                div.className = 'locale-date';
+                div.textContent = `Дата и время для ${name}: ${formatted}`;
+                output.appendChild(div);
+            }
+        }
+
+        function changeColors() {
+            const header = document.querySelector('header');
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            header.style.color = `rgb(${r}, ${g}, ${b})`;
+        }
+
+        function startColorChange() {
+            if (!colorTimer) {
+                changeColors();
+                colorTimer = setInterval(changeColors, 2000);
+                document.getElementById('startColor').disabled = true;
+                document.getElementById('stopColor').disabled = false;
+            }
+        }
+
+        function stopColorChange() {
+            clearInterval(colorTimer);
+            colorTimer = null;
+            document.getElementById('startColor').disabled = false;
+            document.getElementById('stopColor').disabled = true;
+        }
+
+        function startDateUpdate() {
+            if (!dateTimer) {
+                showDate();
+                dateTimer = setInterval(showDate, 1000);
+                document.getElementById('startDate').disabled = true;
+                document.getElementById('stopDate').disabled = false;
+            }
+        }
+
+        function stopDateUpdate() {
+            clearInterval(dateTimer);
+            dateTimer = null;
+            document.getElementById('startDate').disabled = false;
+            document.getElementById('stopDate').disabled = true;
+        }
+
+        window.onload = showDate;
     </script>
 </head>
-<body onload="showDate()">
+<body>
     <header>
         НГТУ, ФБ, Лабораторная работа 6
     </header>
 
     <main>
-        <div id="current-date"></div>
+        <div id="locale-dates"></div>
+
+        <div style="margin-top: 20px;">
+            <button id="startColor" onclick="startColorChange()">Старт (цвет)</button>
+            <button id="stopColor" onclick="stopColorChange()" disabled>Стоп (цвет)</button>
+            <button id="startDate" onclick="startDateUpdate()">Обновлять время</button>
+            <button id="stopDate" onclick="stopDateUpdate()" disabled>Остановить обновление</button>
+        </div>
     </main>
 
     <footer>
         &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
     </footer>
-    
 </body>
 </html>
