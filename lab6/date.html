@@ -3,33 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Привалова Таисия Дмитриевна. Лабораторная 6</title>
+    <title>Привалова Таисия Дмитриевна. Дата-время</title>
     <link rel="stylesheet" href="../main.css">
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="../favicon-32x32.png" >
     <link rel="shortcut icon" href="../favicon-16x16.ico" >
+    <script>
+        function showDate() {
+            let out = document.getElementById('current-date')
+            let  today = new Date();
+            out.innerHTML = today.toLocaleString('ru-Ru');
+        }
+    </script>
 </head>
-<body>
+<body onload="showDate()">
     <header>
         НГТУ, ФБ, Лабораторная работа 6
     </header>
 
     <main>
-        <li>
-            <a href="mtable.html">Таблица умножения</a>
-        </li>
-        <li>
-            <a href="diagram.html">Диаграмма</a>
-        </li>
-        <li>
-            <a href="books.html">Объекты</a>
-        </li>
-        <li>
-            <a href="date.html">Дата-время </a>
-        </li>
-        <li>
-            <a href="dop6.html">Дополнительное задание </a>
-        </li>
+        <div id="current-date"></div>
     </main>
 
     <footer>

@@ -59,7 +59,6 @@
               const dayNum = parseInt(document.getElementById('dayInput').value);
               if (isNaN(dayNum) || dayNum < 1 || dayNum > 30) return;
         
-              // Снять выделение
               document.querySelectorAll('.bar').forEach(b => b.classList.remove('highlight'));
         
               const day = document.querySelectorAll('.day')[dayNum - 1];

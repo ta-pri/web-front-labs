@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Привалова Таисия Дмитриевна. Объекты</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../favicon-32x32.png" >
+    <link rel="shortcut icon" href="../favicon-16x16.ico" >
+    <script src="books.js"></script>
+    <style>
+        .book {
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.4;
+        }
+        .not-available {
+            opacity: 0.5;
+            color: gray;
+        }
+        .not-available span {
+            font-style: italic;
+            color: red;
+        }
+    </style>
+    <script>
+        function showBooks() {
+            const bookList = document.getElementById('bookList');
+            for (let i = 0; i < books.length; i++) {
+                const book = books[i];
+                const bestsellerMark = book.bestseller
+                    ? '<sup style="background-color: yellow; color: red; border-radius: 5px; font-style: italic; padding: 2px;">Бестселлер!</sup>'
+                    : '';
+                const availabilityMark = book.available
+                    ? ''
+                    : '<span> (Нет в наличии)</span>';
+                const className = book.available ? 'book' : 'book not-available';
+
+                bookList.innerHTML += `
+                    <div class="${className}">
+                        <b>${book.author}.</b>
+                        <i>${book.name}</i>
+                        ${bestsellerMark} —
+                        ${book.publicationYear} —
+                        <b>${book.price}₽</b>
+                        ${availabilityMark}
+                    </div>
+                `;
+            }
+        }
+    </script>
+</head>
+<body onload="showBooks()">
+    <header>
+        НГТУ, ФБ, Лабораторная работа 6
+    </header>
+
+    <main>
+        <h1>Список книг</h1>
+        <div id="bookList"></div>
+    </main>
+
+    <footer>
+        &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+    </footer>
+</body>
+</html>
