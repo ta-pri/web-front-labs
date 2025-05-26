@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Курс валют - Узбекская сум</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="script3.js"></script>
+  <link rel="icon" href="rosseti.jpg">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="faviconR.ico" type="image/x-icon"> 
+  <link rel="shortcut icon" href="favicon-32x32.png" >
+    <link rel="shortcut icon" href="favicon-16x16.ico" >
+  <style>
+  
+    .converter, .chart-container {
+      max-width: 700px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px  rgb(6, 6, 118);
+    }
+
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    #result {
+      font-weight: bold;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    canvas {
+      margin-top: 30px;
+    }
+
+    .highlight {
+      background-color: #e6f7ff;
+      padding: 10px;
+      border-left: 4px solid  rgb(6, 6, 118);
+      margin-top: 10px;
+    }
+
+  </style>
+</head>
+<body>
+    <header class="scroll-header">
+        <nav class="menu">
+          <div class="top-row">
+            <img src="../RGZ/фото/logo_rkk_1.png"  >
+            <div class="menu-title">
+                 РАКЕТНО-КОСМИЧЕСКАЯ КОРПОРАЦИЯ "ЭНЕРГИЯ"<br>
+              имени С.П. Королёва
+            </div>
+            <img src="../RGZ/фото/logo_roscosmos-1.png"  >
+          </div>
+      
+          <ul class="menu-links">
+            <li><a href="c.html" >О компании</a></li>
+            <li><a href="news.html">Новости</a></li>
+            <li><a href="currency.html"class="active">Курс валют</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+            <li><a href="video.html">Видео</a></li>
+          </ul>
+        </nav>
+      </header>
+<h1>Курс валют: Узбекский сум (UZS)</h1>
+
+<div class="converter">
+  <h2>Калькулятор валют</h2>
+  <label for="rub">Сумма в рублях (RUB):</label>
+  <input type="number" id="rub" placeholder="Введите сумму в рублях">
+
+  <label for="uzs">Сумма в сумах (UZS):</label>
+  <input type="number" id="uzs" placeholder="Введите сумму в сумах">
+
+  <div id="result"></div>
+</div>
+
+<div class="chart-container">
+  <h2>Динамика курса за последний месяц</h2>
+  <canvas id="rateChart" height="100"></canvas>
+  <div id="info" class="highlight" style="display:none;"></div>
+</div>
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <p>Адрес: ул. Ленина, 4а, г. Королёв, Московская обл., Россия, 141070<br>
+      Тел.: +7 495 513-8655<br>
+      Факс: +7 495 513-8620, +7 495 513-8870<br>
+      Электронная почта: <a href="mailto:post@rsce.ru">post@rsce.ru</a></p>
+      <p>&copy;2025 ПАО «РКК «Энергия» имени С.П. Королёва»</p>
+    </div>
+    <div class="footer-logo">
+      <img src="../RGZ/фото/logo-sm.png" alt="Логотип РКК Энергия">
+    </div>
+  </div>
+</footer>
+<a href="#" class="to-top">наверх</a>
+
+  <script src="scrollToTop.js"></script> 
+
+</body>
+</html>
