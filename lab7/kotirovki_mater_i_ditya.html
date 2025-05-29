@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Привалова Таисия Дмитриевна. Котировки акций компании Мать и дитя`</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../favicon-32x32.png" >
+        <link rel="shortcut icon" href="../favicon-16x16.ico" >
+        <script>
+            let dates = [
+                "14.05.2025", "13.05.2025", "12.05.2025", "11.05.2025", "10.05.2025",
+                "09.05.2025", "08.05.2025", "07.05.2025", "06.05.2025", "05.05.2025"
+            ];
+        
+            let prices = [
+                695, 700, 690, 685, 690,
+                700, 705, 710, 710, 705
+            ];
+        
+            let tableShown = false;
+
+function showStocks() {
+    if (tableShown) return;
+    tableShown = true;
+
+    let table = document.getElementById('stock-table');
+
+    let header = document.createElement('tr');
+    header.innerHTML = "<th>Дата</th><th>Цена, руб</th><th>Изменение</th>";
+    table.appendChild(header);
+
+    let sum = 0;
+    for (let i = 0; i < prices.length; i++) {
+        let tr = document.createElement('tr');
+
+        let tdDate = document.createElement('td');
+        tdDate.innerText = dates[i];
+        tr.appendChild(tdDate);
+
+        let tdPrice = document.createElement('td');
+        tdPrice.innerText = prices[i];
+        tr.appendChild(tdPrice);
+
+        let tdChange = document.createElement('td');
+        if (i === 0) {
+            tdChange.innerText = '—';
+            tdChange.style.color = 'black';
+        } else {
+            let diff = prices[i] - prices[i - 1];
+            tdChange.innerText = (diff > 0 ? '+' : '') + diff;
+            tdChange.style.color = diff > 0 ? 'green' : diff < 0 ? 'red' : 'black';
+        }
+        tr.appendChild(tdChange);
+
+        sum += prices[i];
+        table.appendChild(tr);
+    }
+
+    let avg = (sum / prices.length).toFixed(2);
+    let min = Math.min(...prices);
+    let max = Math.max(...prices);
+
+    document.getElementById('detail').innerText = 
+        `Среднее значение: ${avg} руб | Минимальное: ${min} руб | Максимальное: ${max} руб`;
+}
+        </script>
+ 
+    </head>
+
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+        </header> 
+
+        <main>
+            <button onclick="showStocks(this)">Курс акций Мать и дитя</button>
+            <table border="1" id="stock-table"></table>
+            <div id="detail" style="margin-top: 15px; font-weight: bold;"></div>
+          
+        </main>
+        
+        <footer>
+            &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
+
