@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Привалова Таисия Дмитриевна. Прогноз погоды</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../favicon-32x32.png" >
+        <link rel="shortcut icon" href="../favicon-16x16.ico" >
+        <script>
+            async function loadWeather() {
+              const res = await fetch("https://api.open-meteo.com/v1/forecast?latitude=55.04&longitude=82.93&hourly=temperature_2m&timezone=auto");
+              const data = await res.json();
+        
+              const times = data.hourly.time;
+              const temps = data.hourly.temperature_2m;
+              const today = new Date().toISOString().slice(0, 10);
+        
+              const result = ["08:00", "12:00", "20:00"].map(time => {
+                const t = today + "T" + time;
+                const i = times.indexOf(t);
+                return `${time}: ${temps[i]} °C`;
+              }).join("<br>");
+        
+              document.getElementById("output").innerHTML = result;
+            }
+            window.onload = loadWeather;
+          </script>
+    </head>
+
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+        </header> 
+
+        <main>
+  <h2>Прогноз на сегодня</h2>
+  <div id="output"></div>
+
+        </main>
+        <footer>
+            &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+        </footer>
+</body>
+</html>
