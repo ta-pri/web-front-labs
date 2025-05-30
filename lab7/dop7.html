@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Привалова Таисия Дмитриевна. Дополнительное задание</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../favicon-32x32.png" >
+        <link rel="shortcut icon" href="../favicon-16x16.ico" >
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            canvas {
+                margin: 20px auto;
+                display: block;
+                max-width: 600px;
+                width: 100%;
+            }
+        </style>
+        <script>
+            async function getWeather() {
+                const lat = 55.03; 
+                const lon = 82.92;
+                const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,relative_humidity_2m&current_weather=true&timezone=Europe%2FMoscow`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                const currentTemp = data.current_weather.temperature;
+                const currentTime = data.current_weather.time;
+
+                function findClosestIndex(timeArray, targetTime) {
+                    let minDiff = Infinity;
+                    let closestIndex = -1;
+                    for (let i = 0; i < timeArray.length; i++) {
+                        const diff = Math.abs(new Date(timeArray[i]) - new Date(targetTime));
+                        if (diff < minDiff) {
+                            minDiff = diff;
+                            closestIndex = i;
+                        }
+                    }
+                    return closestIndex;
+                }
+
+                const index = findClosestIndex(data.hourly.time, currentTime);
+                const currentHumidity = data.hourly.relative_humidity_2m[index];
+
+                document.getElementById('current').innerHTML = `
+                    <strong>Текущая температура:</strong> ${currentTemp}°C<br>
+                    <strong>Текущая влажность:</strong> ${currentHumidity}%<br>
+                    <strong>Время:</strong> ${new Date(currentTime).toLocaleString("ru-RU")}
+                `;
+
+                const hours = data.hourly.time.slice(0, 24);
+                const temperatures = data.hourly.temperature_2m.slice(0, 24);
+                const humidities = data.hourly.relative_humidity_2m.slice(0, 24);
+                const labels = hours.map(h => new Date(h).toLocaleTimeString("ru-RU", { hour: '2-digit', minute: '2-digit' }));
+
+                new Chart(document.getElementById('tempChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Температура (°C)',
+                            data: temperatures,
+                            backgroundColor: 'rgba(255, 99, 132, 0.6)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: false
+                            }
+                        }
+                    }
+                });
+
+                new Chart(document.getElementById('humidityChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Влажность (%)',
+                            data: humidities,
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            }
+
+            getWeather();
+        </script>
+    </head>
+    <body>
+        <header>
+            НГТУ, ФБ, Лабораторная работа 7
+            <hr>
+        </header>
+
+        <main>
+            <h2>Прогноз погоды </h2>
+            <div id="current">Загрузка текущей погоды...</div>
+            <canvas id="tempChart"></canvas>
+            <canvas id="humidityChart"></canvas>
+        </main>
+
+        <footer>
+            &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+        </footer>
+    </body>
+</html>
