@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Привалова Таисия Дмитриевна. Курс евро</title>
+        <link rel="stylesheet" href="../main.css">
+        <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+        <link rel="shortcut icon" href="../favicon-32x32.png" >
+        <link rel="shortcut icon" href="../favicon-16x16.ico" >
+    <style>
+        #euro-info {
+            margin-top: 20px;
+            padding: 15px;
+            border: 5px solid plum;
+            border-radius: 10px;
+            background-color: rgb(234, 220, 234);
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+        }
+
+        .rate-up {
+            color: green;
+        }
+
+        .rate-down {
+            color: red;
+        }
+
+        .rate-same {
+            color: rgb(37, 31, 128);
+        }
+
+        a.source-link {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+    <script>
+        function getEuroExchangeRate() {
+            const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            fetch(url)
+                .then(response => response.json())
+                .then(json => {
+                    const eur = json.Valute.EUR;
+                    const date = new Date(json.Date).toLocaleDateString("ru-RU");
+                    const previous = eur.Previous;
+                    const current = eur.Value;
+                    const diff = (current - previous).toFixed(4);
+                    let diffText = '';
+                    let diffClass = '';
+
+                    if (current > previous) {
+                        diffText = `Курс вырос на ${diff} ₽`;
+                        diffClass = 'rate-up';
+                    } else if (current < previous) {
+                        diffText = `Курс упал на ${Math.abs(diff)} ₽`;
+                        diffClass = 'rate-down';
+                    } else {
+                        diffText = `Курс не изменился`;
+                        diffClass = 'rate-same';
+                    }
+
+                    const infoDiv = document.getElementById('euro-info');
+                    infoDiv.innerHTML = `
+                        <h3>Курс евро</h3>
+                        <p><strong>Дата:</strong> ${date}</p>
+                        <p><strong>Текущий курс:</strong> ${current.toFixed(2)} ₽</p>
+                        <p><strong>Курс на предыдущую дату:</strong> ${previous.toFixed(2)} ₽</p>
+                        <p class="${diffClass}"><strong>Изменение:</strong> ${diffText}</p>
+                        <a class="source-link" href="https://www.cbr-xml-daily.ru/" target="_blank">
+                            Источник данных — Центробанк РФ (cbr-xml-daily.ru)
+                        </a>
+                    `;
+                });
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        НГТУ, ФБ, Лабораторная работа 7
+        <hr>
+    </header> 
+
+    <main>
+        <button onclick="getEuroExchangeRate()">Показать курс евро</button>
+        <div id="euro-info"></div>
+    </main>
+
+        <footer>
+            &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
+        </footer>
+</body>
+</html>
