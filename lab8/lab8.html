@@ -8,6 +8,7 @@
         <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
         <link rel="shortcut icon" href="../favicon-32x32.png" >
         <link rel="shortcut icon" href="../favicon-16x16.ico" >
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     </head>
 
     <body>
@@ -16,12 +17,24 @@
         </header> 
 
         <main>
-
+            <div id="app">
+                <h1 :title="messageRus">{{message}}</h1>
+            </div>
 
         </main>
         
         <footer>
             &copy; Привалова Таисия, ФБИ-33, 2 курс, 2025
         </footer>
+        <script>
+            Vue.createApp({
+                data() {
+                    return {
+                        message: 'Hello!',
+                        messageRus: 'Привет!',
+                    }
+                },
+            }).mount('#app');
+        </script>
     </body>
 </html>
