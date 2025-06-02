@@ -45,36 +45,58 @@
           <ul class="list-group">
             <li v-for="(flower, id) in flowers" class="list-group-item d-flex justify-content-between align-items-center">
               {{ flower }}
-              <button @click="edit(id, flower)" class="btn btn-sm btn-outline-primary">
-                <i class="bi bi-pencil"></i>
-              </button>
+              <div class="btn-group">
+                <button @click="edit(id, flower)" class="btn btn-sm btn-outline-primary" title="Редактировать">
+                  <i class="bi bi-pencil"></i>
+                </button>
+                <button @click="remove(id)" class="btn btn-sm btn-outline-danger" title="Удалить">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
             </li>
           </ul>
+          <div class="mt-2">
+            <button @click="add" class="btn btn-success btn-sm">
+              <i class="bi bi-plus-circle"></i> Добавить цветок
+            </button>
+          </div>
         </div>
       </div>
       <hr />
 
       <h2>Цветы</h2>
-      <table class="table table-danger">
-        <thead>
-          <tr>
-            <th>Название</th>
-            <th>Редактирование</th>
+      <div style="width: 100%; max-width: 600px;">
+        <table class="table table-danger">
+          <thead>
+            <tr>
+              <th>Название</th>
+              <th>Редактирование</th>
+            </tr>
+          </thead>
+          <tr v-for="(flower, id) in flowers">
+            <td>
+              <span v-if="flower === null">загружается...</span>
+              <span v-else>{{ flower }}</span>
+            </td>
+            <td>
+              <div class="btn-group" v-if="flower !== null">
+                <button @click="edit(id, flower)" class="btn btn-primary btn-sm me-1" title="Редактировать">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+                <button @click="remove(id)" class="btn btn-danger btn-sm" title="Удалить">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </div>
+              <div class="spinner-border" role="status" v-if="flower === null"></div>
+            </td>
           </tr>
-        </thead>
-        <tr v-for="(flower, id) in flowers">
-          <td>
-            <span v-if="flower === null">загружается...</span>
-            <span v-else>{{ flower }}</span>
-          </td>
-          <td>
-            <button @click="edit(id, flower)" class="btn btn-primary" v-if="flower !== null">
-              <i class="bi bi-pencil-square"></i>
-            </button>
-            <div class="spinner-border" role="status" v-if="flower === null"></div>
-          </td>
-        </tr>
-      </table>
+        </table>
+        <div class="mt-2">
+          <button @click="add" class="btn btn-success btn-sm">
+            <i class="bi bi-plus-circle"></i> Добавить цветок
+          </button>
+        </div>
+      </div>
       <hr />
 
       <h2>Калькулятор</h2>
@@ -135,6 +157,17 @@
         sum() {
           this.result = Number(this.a) + Number(this.b);
         },
+        remove(id) {
+          if (confirm(`Удалить "${this.flowers[id]}"?`)) {
+            this.flowers.splice(id, 1);
+          }
+        },
+        add() {
+          let newFlower = prompt('Введите название нового цветка:');
+          if (newFlower && newFlower.trim() !== '') {
+            this.flowers.push(newFlower.trim());
+          }
+        }
       }
     }).mount('#app');
   </script>
